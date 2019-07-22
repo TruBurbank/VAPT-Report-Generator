@@ -2,10 +2,8 @@ import sys
 import Conclusion
 import nontech 
 import Tech
-from PyQt5 import QtWidgets
-from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QLabel, QWidget ,QMainWindow
-from PyQt5.QtGui import QIcon, QPixmap
-from PyQt5.QtCore import pyqtSlot
+from PyQt5 import QtWidgets, QtGui, QtCore
+from PyQt5.QtWidgets import *
 from docx.shared import Cm
 from Tech import *
 from Conclusion import *
@@ -21,7 +19,7 @@ class App1(QWidget):
         self.width = 1280
         self.height = 720
         self.initUI()
-    
+
     def initUI(self):
         self.setWindowTitle(self.title)
         self.setWindowIcon(QIcon("Pristine.png"))
@@ -44,13 +42,6 @@ class App1(QWidget):
         button.move(800,70)
         button.resize(100,100)
         button.clicked.connect(self.openCon)
-
-        '''label = QLabel(self)
-        pixmap = QPixmap('Pristine.png')#.scaledToWidth(20)
-        label.setPixmap(pixmap)
-        label.move(450,400)
-        label.resize(300,300)
-        self.resize(pixmap.width(5),pixmap.height(5))'''
         
         self.show()
 
@@ -58,7 +49,8 @@ class App1(QWidget):
     def openTech(self):
         #self.window = QtWidgets.QMainWindow()
         self.ui = Tech.App()
-        self.ui.initUI()
+        self.ui.TechUI(self.window)
+        #self.ui.on_report()
         App1.hide(self)
         #self.window.show()
 
@@ -66,7 +58,7 @@ class App1(QWidget):
     def openNonTech(self):
         #self.window = QtWidgets.QMainWindow()
         self.ui = nontech.NonTech()
-        self.ui.initUI()
+        self.ui.NonTechUI()
         App1.hide(self)
         #self.window.show()
 
@@ -74,7 +66,7 @@ class App1(QWidget):
     def openCon(self):
         #self.window = QtWidgets.QMainWindow()
         self.ui = Conclusion.Conclusion()
-        self.ui.initUI()
+        self.ui.ConclusionUI()
         #self.ui.on_report()
         App1.hide(self)
         #self.window.show()
