@@ -22,7 +22,7 @@ class App(QWidget):
         self.doc.reinitialize_doc()
         #self.TechUI(MainWindow)
 
-    def TechUI(self, MainWindow):        
+    def TechUI(self, MainWindow):
         self.setWindowTitle(self.title)
         self.setWindowIcon(QIcon("Pristine.png"))
         self.setGeometry(self.left, self.top, self.width, self.height)
@@ -30,7 +30,7 @@ class App(QWidget):
         self.font = QFont()
         self.font.setFamily('Helvetica')
         self.font.setPointSize(16)
-        
+
         self.Vname = QLabel('Vulnerabilty Name:',self)
         self.Vname.move(20, 5)
         self.Vname.resize(250,50)
@@ -110,7 +110,7 @@ class App(QWidget):
         self.SaveButton.move(480,580)
         self.SaveButton.clicked.connect(self.back)
         self.SaveButton.setFont(self.font)
- 
+
         self.saveReport = QPushButton('Add Vulnerabilty',self)
         self.saveReport.move(560,580)
         self.saveReport.clicked.connect(self.on_report)
@@ -125,7 +125,7 @@ class App(QWidget):
 
     @pyqtSlot()
     def on_report(self):
-        
+
         vname = self.Vnamebox.text()
         #print(vname)
         self.doc.setVname(vname)
@@ -134,8 +134,8 @@ class App(QWidget):
         severity = self.VSeveritybox.currentText()
         self.doc.setVSeverity(severity)
         #print(severity)
- 
-        VDesc = self.VDescbox.toPlainText() 
+
+        VDesc = self.VDescbox.toPlainText()
         self.doc.SetVdesc(VDesc)
         self.VDescbox.setPlainText(" ")
 
@@ -151,9 +151,9 @@ class App(QWidget):
 
         VImpact = self.VImpactBox.toPlainText()
         self.doc.setImpact(VImpact)
-        self.VImpactBox.setPlainText(" ") 
-        
-        Vrem = self.VRemediationBox.toPlainText() 
+        self.VImpactBox.setPlainText(" ")
+
+        Vrem = self.VRemediationBox.toPlainText()
         self.doc.setVremed(Vrem)
         self.VRemediationBox.setPlainText(" ")
 
@@ -166,7 +166,7 @@ class App(QWidget):
     @pyqtSlot()
     def on_click(self):
         self.doc.Savereport()
-        
+
     @pyqtSlot()
     def back(self):
         #self.window = QtWidgets.QMainWindow()
@@ -175,7 +175,7 @@ class App(QWidget):
         self.ui.initUI()
         App.hide(self)
         #self.window.show()
-  
+
 if __name__ == '__main__':
     import sys
     app = QApplication(sys.argv)
