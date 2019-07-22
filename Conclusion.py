@@ -19,18 +19,15 @@ class Conclusion(QWidget):
 		self.height = 720
 		self.doc = Print_document()
 		self.doc.reinitialize_doc()
+		#self.ConclusionUI()
 
-
-		self.initUI()
-
-	def initUI(self):
+	def ConclusionUI(self):
 		self.setWindowTitle(self.title)
 		self.setGeometry(self.left, self.top, self.width, self.height)
 
 		self.font = QFont()
 		self.font.setFamily('Helvetica')
 		self.font.setPointSize(16)
-
 
 		self.Conc = QLabel('Conclusion:',self)
 		self.Conc.move(120, 105)
@@ -70,7 +67,7 @@ class Conclusion(QWidget):
 		Conclusion.hide(self)
 		#self.window.show()
 
-    
+
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
