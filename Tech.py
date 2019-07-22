@@ -19,14 +19,12 @@ class App(QWidget):
         self.__Img = None
         self.__doc = None
         self.doc = Print_document()
-        self.doc.start_doc()
-        self.doc.initialize_doc()
-        self.initUI()
+        self.doc.reinitialize_doc()
+        #self.TechUI(MainWindow)
 
-        
-    def initUI(self):        
+    def TechUI(self, MainWindow):        
         self.setWindowTitle(self.title)
-        self.setWindowIcon(QIcon("Prinstine.png"))
+        self.setWindowIcon(QIcon("Pristine.png"))
         self.setGeometry(self.left, self.top, self.width, self.height)
 
         self.font = QFont()
@@ -42,6 +40,7 @@ class App(QWidget):
         self.Vnamebox.move(260, 10)
         self.Vnamebox.resize(600,30)
         self.Vnamebox.setFont(self.font)
+        #self.Vnamebox.setText('')
 
         self.VDesc = QLabel('Vulnerabilty Description:',self)
         self.VDesc.move(20, 80)
@@ -51,8 +50,9 @@ class App(QWidget):
         self.VDescbox = QPlainTextEdit(self)
         self.VDescbox.move(260, 50)
         self.VDescbox.resize(600,100)
+        #self.VDescbox.setPlainText('')
 
-        self.Vurl = QLabel('Vulnearable URL:',self)
+        self.Vurl = QLabel('Vulnerable URL:',self)
         self.Vurl.move(20, 155)
         self.Vurl.resize(250,50)
         self.Vurl.setFont(self.font)
@@ -60,9 +60,20 @@ class App(QWidget):
         self.Vurlbox = QLineEdit(self)
         self.Vurlbox.move(260, 160)
         self.Vurlbox.resize(600,30)
+        self.Vurlbox.setText('')
+
+        self.VPort = QLabel('Vulnerable Port:',self)
+        self.VPort.move(20, 195)
+        self.VPort.resize(250,50)
+        self.VPort.setFont(self.font)
+
+        self.VPortBox = QLineEdit(self)
+        self.VPortBox.move(260, 200)
+        self.VPortBox.resize(600,30)
+        #self.VPortBox.setText('')
 
         self.VSeverity = QLabel('Severity:',self)
-        self.VSeverity.move(20, 205)
+        self.VSeverity.move(20, 245)
         self.VSeverity.resize(250,50)
         self.VSeverity.setFont(self.font)
 
@@ -72,28 +83,30 @@ class App(QWidget):
         self.VSeveritybox.addItem('Medium',3)
         self.VSeveritybox.addItem('Low',4)
         self.VSeveritybox.addItem('Informational',5)
-        self.VSeveritybox.move(260, 210)
+        self.VSeveritybox.move(260, 250)
         self.VSeveritybox.resize(600,30)
 
         self.VImpact = QLabel('Impact:',self)
-        self.VImpact.move(20, 280)
+        self.VImpact.move(20, 320)
         self.VImpact.resize(250,80)
         self.VImpact.setFont(self.font)
 
         self.VImpactBox = QPlainTextEdit(self)
-        self.VImpactBox.move(260, 250)
+        self.VImpactBox.move(260, 290)
         self.VImpactBox.resize(600,130)
+        #self.VImpactBox.setPlainText('')
 
         self.VRemediation = QLabel('Remediation:',self)
-        self.VRemediation.move(20, 425)
+        self.VRemediation.move(20, 465)
         self.VRemediation.resize(250,50)
         self.VRemediation.setFont(self.font)
 
         self.VRemediationBox = QPlainTextEdit(self)
-        self.VRemediationBox.move(260, 400)
+        self.VRemediationBox.move(260, 440)
         self.VRemediationBox.resize(600,100)
+        #self.VRemediationBox.setPlainText('')
 
-        self.SaveButton = QPushButton('Back', self)
+        self.SaveButton = QPushButton('Save', self)
         self.SaveButton.move(480,580)
         self.SaveButton.clicked.connect(self.back)
         self.SaveButton.setFont(self.font)
@@ -114,26 +127,35 @@ class App(QWidget):
     def on_report(self):
         
         vname = self.Vnamebox.text()
-        print(vname)
+        #print(vname)
         self.doc.setVname(vname)
+        self.Vnamebox.setText(" ")
 
         severity = self.VSeveritybox.currentText()
         self.doc.setVSeverity(severity)
-        print(severity)
+        #print(severity)
  
         VDesc = self.VDescbox.toPlainText() 
         self.doc.SetVdesc(VDesc)
+        self.VDescbox.setPlainText(" ")
 
         Vurl = self.Vurlbox.text()
         self.doc.setVurl(Vurl)
+        self.Vurlbox.setText(" ")
+
+        Vport = self.VPortBox.text()
+        self.doc.setVport(Vport)
+        self.VPortBox.setText(" ")
 
         self.doc.setImg(self.__Img)
 
         VImpact = self.VImpactBox.toPlainText()
-        self.doc.setImpact(VImpact) 
+        self.doc.setImpact(VImpact)
+        self.VImpactBox.setPlainText(" ") 
         
         Vrem = self.VRemediationBox.toPlainText() 
         self.doc.setVremed(Vrem)
+        self.VRemediationBox.setPlainText(" ")
 
         self.doc.pageBreak()
 
@@ -153,10 +175,13 @@ class App(QWidget):
         self.ui.initUI()
         App.hide(self)
         #self.window.show()
-
   
 if __name__ == '__main__':
+    import sys
     app = QApplication(sys.argv)
-    ex = App()
-    a = App.on_report()
+    MainWindow1 = QtWidgets.QMainWindow()
+    ui = App()
+    ui.setup(MainWindow)
+    MainWindow1.show()
+    #a = App.on_report()
     sys.exit(app.exec_())
