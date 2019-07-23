@@ -49,8 +49,8 @@ class Print_document():
         f.size = Pt(16)
 
     def setVname(self,Vname):
-        
-        self.document.add_heading('Vulnerability Name:', 2) 
+
+        self.document.add_heading('Vulnerability Name:', 2)
         p = self.document.add_paragraph(Vname)
         p.style = self.document.styles['Normal']
 
@@ -86,7 +86,7 @@ class Print_document():
 
     def AuthorTable(self,author,classification,approach,manager,title,version):
         p = self.document.add_heading('REPORT DETAILS', 0)
-        p.alignment = WD_ALIGN_PARAGRAPH.CENTER 
+        p.alignment = WD_ALIGN_PARAGRAPH.CENTER
         records = (
             (title, version, author,manager,classification,approach ),
         )
@@ -145,7 +145,7 @@ class Print_document():
             row_cells = table.add_row().cells
             row_cells[0].text = str(qty)
             row_cells[1].text = id
-            row_cells[2].text = desc            
+            row_cells[2].text = desc
 
     def setSummary(self):
         h = self.document.add_heading('Executive Summary', 0)
@@ -170,17 +170,17 @@ class Print_document():
         font1.size = Pt(18)
         l1.style = self.document.styles['List Bullet']
         p5 = self.document.add_paragraph('Various methods including Google search are used to get target system data. One can also use web page source code analysis technique to get more info about the system, software and plug-in versions. There are many free tools and services available in the market which can give information like database or table names, DB versions, software versions, hardware used and various third-party plugins used in the target system. ')
-        
+
         l2 = self.document.add_paragraph(style = 'List Bullet')
         l2r = l2.add_run('Vulnerability Assessment ').bold = True
         l2.style = self.document.styles['List Bullet']
         p6 = self.document.add_paragraph('Based on the data collected in first step one can find the security weakness in the target system. This helps penetration testers to launch attacks using identified entry points in the system. ')
-        
+
         l3 = self.document.add_paragraph(style = 'List Bullet')
         l3r = l3.add_run('Vulnerability Exploitation ').bold = True
         l3.style = self.document.styles['List Bullet']
-        p7 = self.document.add_paragraph('This step requires special skills and techniques to launch attack on target system. Experienced penetration testers can use their skills to launch attack on the system. ')        
-        
+        p7 = self.document.add_paragraph('This step requires special skills and techniques to launch attack on target system. Experienced penetration testers can use their skills to launch attack on the system. ')
+
         l4 = self.document.add_paragraph(style = 'List Bullet')
         l4r = l4.add_run('Result analysis and report preparation  ').bold = True
         l4.style = self.document.styles['List Bullet']
@@ -215,7 +215,7 @@ class Print_document():
     def setImg(self,Img):
         self.document.add_heading('Proof of Concept: ',2)
         if (Img):
-            lengthImg = len(Img[0]) 
+            lengthImg = len(Img[0])
             for i in range (0,lengthImg):
                 self.document.add_picture(Img[0][i], width=Cm(15.95))
 
@@ -236,7 +236,7 @@ class Print_document():
 
     def pageBreak(self):
         self.document.add_page_break()
-    
+
     def Savedoc(self,name):
         self.document.save(name[0] + '.docx')
 
