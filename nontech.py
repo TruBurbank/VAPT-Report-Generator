@@ -98,17 +98,6 @@ class NonTech(QWidget):
 		self.VManagerbox.resize(600,30)
 		self.VManagerbox.setText('')
 
-		self.VClassification = QLabel('Classification:',self)
-		self.VClassification.move(20, 255)
-		self.VClassification.resize(250,50)
-		self.VClassification.setFont(self.font)
-
-		self.VClassificationbox = QComboBox(self)
-		self.VClassificationbox.addItem('Classified',1)
-		self.VClassificationbox.addItem('Non-Classified',2)
-		self.VClassificationbox.move(260, 260)
-		self.VClassificationbox.resize(600,30)
-
 		self.VApproach = QLabel('Approach:',self)
 		self.VApproach.move(20, 305)
 		self.VApproach.resize(250,50)
@@ -184,20 +173,22 @@ class NonTech(QWidget):
 		Title = self.VTitleBox.text()
 		Date= self.VDateBox.text()
 		Version = self.VersionCbox.text()
-		Classification = self.VClassificationbox.currentText()
 		Approach = self.VApproachbox.currentText()
 
 		self.doc.setCName(cname)
 
 		self.doc.pageBreak()
 
-		self.doc.AuthorTable(Author,Classification,Approach,PManager,Title,Version)
+		self.doc.AuthorTable(Author,Approach,PManager,Title,Version)
 		self.doc.RecipientTable(rname,rtitle,cname)
 		self.doc.VersionTable(Version,Author,Date)
 
 		self.doc.pageBreak()
+
 		self.doc.setSummary()
 
+		self.doc.pageBreak()
+		self.doc.Intro(cname,PManager,Author)
 		self.doc.Savereport()
 
 if __name__ == '__main__':
