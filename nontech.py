@@ -36,7 +36,6 @@ class NonTech(QWidget):
 		self.doc = Print_document()
 		self.doc.start_doc()
 		self.doc.initialize_doc()
-		#self.NonTechUI()
 
 	def NonTechUI(self):
 		self.setWindowTitle(self.title)
@@ -163,18 +162,16 @@ class NonTech(QWidget):
 
 		self.ImgButton = QPushButton('Browse', self)
 		self.ImgButton.move(400,580)
-		#self.ImgButton.clicked.connect(self.on_browse)
 		self.ImgButton.setFont(self.font)
 
 		self.show()
 
 	@pyqtSlot()
 	def back(self):
-		#self.window = QtWidgets.QMainWindow()
 		self.ui = MainWindow.App1()
 		self.ui.initUI()
 		NonTech.hide(self)
-		#self.window.show()
+
 	@pyqtSlot()
 	def on_report(self):
 		self.doc.setTitle()

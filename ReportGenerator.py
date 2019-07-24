@@ -61,7 +61,6 @@ class Print_document():
         font2.size = Pt(48)'''
         p = self.document.add_heading("NETWORK", 0)
         p.alignment = WD_ALIGN_PARAGRAPH.CENTER
-        #p.style1 = self.document.styles['Heading 3']
         '''obj_styles = self.document.styles
         obj_charstyle = obj_styles.add_style('CommentsStyle', WD_STYLE_TYPE.CHARACTER)
         obj_font = obj_charstyle.font

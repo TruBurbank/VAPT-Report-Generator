@@ -20,7 +20,6 @@ class App(QWidget):
         self.__doc = None
         self.doc = Print_document()
         self.doc.reinitialize_doc()
-        #self.TechUI(MainWindow)
 
     def TechUI(self, MainWindow):
         self.setWindowTitle(self.title)
@@ -40,7 +39,6 @@ class App(QWidget):
         self.Vnamebox.move(260, 10)
         self.Vnamebox.resize(600,30)
         self.Vnamebox.setFont(self.font)
-        #self.Vnamebox.setText('')
 
         self.VDesc = QLabel('Vulnerabilty Description:',self)
         self.VDesc.move(20, 80)
@@ -50,7 +48,6 @@ class App(QWidget):
         self.VDescbox = QPlainTextEdit(self)
         self.VDescbox.move(260, 50)
         self.VDescbox.resize(600,100)
-        #self.VDescbox.setPlainText('')
 
         self.Vurl = QLabel('Vulnerable URL:',self)
         self.Vurl.move(20, 155)
@@ -70,7 +67,6 @@ class App(QWidget):
         self.VPortBox = QLineEdit(self)
         self.VPortBox.move(260, 200)
         self.VPortBox.resize(600,30)
-        #self.VPortBox.setText('')
 
         self.VSeverity = QLabel('Severity:',self)
         self.VSeverity.move(20, 245)
@@ -94,7 +90,6 @@ class App(QWidget):
         self.VImpactBox = QPlainTextEdit(self)
         self.VImpactBox.move(260, 290)
         self.VImpactBox.resize(600,130)
-        #self.VImpactBox.setPlainText('')
 
         self.VRemediation = QLabel('Remediation:',self)
         self.VRemediation.move(20, 465)
@@ -104,7 +99,6 @@ class App(QWidget):
         self.VRemediationBox = QPlainTextEdit(self)
         self.VRemediationBox.move(260, 440)
         self.VRemediationBox.resize(600,100)
-        #self.VRemediationBox.setPlainText('')
 
         self.SaveButton = QPushButton('Save', self)
         self.SaveButton.move(480,580)
@@ -127,13 +121,11 @@ class App(QWidget):
     def on_report(self):
 
         vname = self.Vnamebox.text()
-        #print(vname)
         self.doc.setVname(vname)
         self.Vnamebox.setText(" ")
 
         severity = self.VSeveritybox.currentText()
         self.doc.setVSeverity(severity)
-        #print(severity)
 
         VDesc = self.VDescbox.toPlainText()
         self.doc.SetVdesc(VDesc)
@@ -169,12 +161,10 @@ class App(QWidget):
 
     @pyqtSlot()
     def back(self):
-        #self.window = QtWidgets.QMainWindow()
         self.doc.Savereport()
         self.ui = MainWindow.App1()
         self.ui.initUI()
         App.hide(self)
-        #self.window.show()
 
 if __name__ == '__main__':
     import sys
@@ -183,5 +173,4 @@ if __name__ == '__main__':
     ui = App()
     ui.setup(MainWindow)
     MainWindow1.show()
-    #a = App.on_report()
     sys.exit(app.exec_())

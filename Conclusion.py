@@ -19,7 +19,6 @@ class Conclusion(QWidget):
 		self.height = 720
 		self.doc = Print_document()
 		self.doc.reinitialize_doc()
-		#self.ConclusionUI()
 
 	def ConclusionUI(self):
 		self.setWindowTitle(self.title)
@@ -60,13 +59,9 @@ class Conclusion(QWidget):
 
 	@pyqtSlot()
 	def back(self):
-		#self.window = QtWidgets.QMainWindow()
 		self.ui = MainWindow.App1()
 		self.ui.initUI()
 		Conclusion.hide(self)
-		#self.window.show()
-
-
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
