@@ -1,8 +1,8 @@
 import sys
-import os 
+import os
 from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QLabel, QWidget ,QMainWindow, QPlainTextEdit
-from PyQt5.QtGui import QIcon, QPixmap, QFont 
+from PyQt5.QtGui import QIcon, QPixmap, QFont
 from PyQt5.QtCore import pyqtSlot
 from ReportGenerator import Print_document
 from MainWindow import *
@@ -47,7 +47,6 @@ class Conclusion(QWidget):
 		self.Back_button.move(100,400)
 		self.Back_button.resize(100,50)
 		self.Back_button.clicked.connect(self.back)
-
 
 		self.show()
 

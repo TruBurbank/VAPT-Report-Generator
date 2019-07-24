@@ -122,32 +122,32 @@ class NonTech(QWidget):
 		self.VApproachbox.resize(600,30)
 
 		self.Rname = QLabel('Recipient Name:',self)
-		self.Rname.move(20, 345)
+		self.Rname.move(20, 385)
 		self.Rname.resize(250,50)
 		self.Rname.setFont(self.font)
 
 		self.Rnamebox = QLineEdit(self)
-		self.Rnamebox.move(260, 350)
+		self.Rnamebox.move(260, 400)
 		self.Rnamebox.resize(600,30)
 		self.Rnamebox.setText('')
 
 		self.Rtitle = QLabel('Recipient Title',self)
-		self.Rtitle.move(20, 385)
+		self.Rtitle.move(20, 435)
 		self.Rtitle.resize(250,50)
 		self.Rtitle.setFont(self.font)
 
 		self.Rtitlebox = QLineEdit(self)
-		self.Rtitlebox.move(260, 390)
+		self.Rtitlebox.move(260, 440)
 		self.Rtitlebox.resize(600,30)
 		self.Rtitlebox.setText('')
 
 		self.VersionC = QLabel('Version:',self)
-		self.VersionC.move(20, 325)
+		self.VersionC.move(20, 355)
 		self.VersionC.resize(250,50)
 		self.VersionC.setFont(self.font)
 
 		self.VersionCbox = QLineEdit(self)
-		self.VersionCbox.move(260, 330)
+		self.VersionCbox.move(260, 360)
 		self.VersionCbox.resize(600,30)
 		self.VersionCbox.setText('')
 
