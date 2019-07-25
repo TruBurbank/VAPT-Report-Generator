@@ -36,7 +36,6 @@ class NonTech(QWidget):
 		self.doc = Print_document()
 		self.doc.start_doc()
 		self.doc.initialize_doc()
-		#self.NonTechUI()
 
 	def NonTechUI(self):
 		self.setWindowTitle(self.title)
@@ -99,17 +98,6 @@ class NonTech(QWidget):
 		self.VManagerbox.resize(600,30)
 		self.VManagerbox.setText('')
 
-		self.VClassification = QLabel('Classification:',self)
-		self.VClassification.move(20, 255)
-		self.VClassification.resize(250,50)
-		self.VClassification.setFont(self.font)
-
-		self.VClassificationbox = QComboBox(self)
-		self.VClassificationbox.addItem('Classified',1)
-		self.VClassificationbox.addItem('Non-Classified',2)
-		self.VClassificationbox.move(260, 260)
-		self.VClassificationbox.resize(600,30)
-
 		self.VApproach = QLabel('Approach:',self)
 		self.VApproach.move(20, 305)
 		self.VApproach.resize(250,50)
@@ -122,32 +110,32 @@ class NonTech(QWidget):
 		self.VApproachbox.resize(600,30)
 
 		self.Rname = QLabel('Recipient Name:',self)
-		self.Rname.move(20, 345)
+		self.Rname.move(20, 385)
 		self.Rname.resize(250,50)
 		self.Rname.setFont(self.font)
 
 		self.Rnamebox = QLineEdit(self)
-		self.Rnamebox.move(260, 350)
+		self.Rnamebox.move(260, 400)
 		self.Rnamebox.resize(600,30)
 		self.Rnamebox.setText('')
 
 		self.Rtitle = QLabel('Recipient Title',self)
-		self.Rtitle.move(20, 385)
+		self.Rtitle.move(20, 435)
 		self.Rtitle.resize(250,50)
 		self.Rtitle.setFont(self.font)
 
 		self.Rtitlebox = QLineEdit(self)
-		self.Rtitlebox.move(260, 390)
+		self.Rtitlebox.move(260, 440)
 		self.Rtitlebox.resize(600,30)
 		self.Rtitlebox.setText('')
 
 		self.VersionC = QLabel('Version:',self)
-		self.VersionC.move(20, 325)
+		self.VersionC.move(20, 355)
 		self.VersionC.resize(250,50)
 		self.VersionC.setFont(self.font)
 
 		self.VersionCbox = QLineEdit(self)
-		self.VersionCbox.move(260, 330)
+		self.VersionCbox.move(260, 360)
 		self.VersionCbox.resize(600,30)
 		self.VersionCbox.setText('')
 
@@ -163,18 +151,16 @@ class NonTech(QWidget):
 
 		self.ImgButton = QPushButton('Browse', self)
 		self.ImgButton.move(400,580)
-		#self.ImgButton.clicked.connect(self.on_browse)
 		self.ImgButton.setFont(self.font)
 
 		self.show()
 
 	@pyqtSlot()
 	def back(self):
-		#self.window = QtWidgets.QMainWindow()
 		self.ui = MainWindow.App1()
 		self.ui.initUI()
 		NonTech.hide(self)
-		#self.window.show()
+
 	@pyqtSlot()
 	def on_report(self):
 		self.doc.setTitle()
@@ -187,20 +173,22 @@ class NonTech(QWidget):
 		Title = self.VTitleBox.text()
 		Date= self.VDateBox.text()
 		Version = self.VersionCbox.text()
-		Classification = self.VClassificationbox.currentText()
 		Approach = self.VApproachbox.currentText()
 
 		self.doc.setCName(cname)
 
 		self.doc.pageBreak()
 
-		self.doc.AuthorTable(Author,Classification,Approach,PManager,Title,Version)
+		self.doc.AuthorTable(Author,Approach,PManager,Title,Version)
 		self.doc.RecipientTable(rname,rtitle,cname)
 		self.doc.VersionTable(Version,Author,Date)
 
 		self.doc.pageBreak()
+
 		self.doc.setSummary()
 
+		self.doc.pageBreak()
+		self.doc.Intro(cname,PManager,Author)
 		self.doc.Savereport()
 
 if __name__ == '__main__':

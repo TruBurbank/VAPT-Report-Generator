@@ -1,8 +1,8 @@
 import sys
-import os 
+import os
 from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QLabel, QWidget ,QMainWindow, QPlainTextEdit
-from PyQt5.QtGui import QIcon, QPixmap, QFont 
+from PyQt5.QtGui import QIcon, QPixmap, QFont
 from PyQt5.QtCore import pyqtSlot
 from ReportGenerator import Print_document
 from MainWindow import *
@@ -19,7 +19,6 @@ class Conclusion(QWidget):
 		self.height = 720
 		self.doc = Print_document()
 		self.doc.reinitialize_doc()
-		#self.ConclusionUI()
 
 	def ConclusionUI(self):
 		self.setWindowTitle(self.title)
@@ -48,7 +47,6 @@ class Conclusion(QWidget):
 		self.Back_button.resize(100,50)
 		self.Back_button.clicked.connect(self.back)
 
-
 		self.show()
 
 	@pyqtSlot()
@@ -61,13 +59,9 @@ class Conclusion(QWidget):
 
 	@pyqtSlot()
 	def back(self):
-		#self.window = QtWidgets.QMainWindow()
 		self.ui = MainWindow.App1()
 		self.ui.initUI()
 		Conclusion.hide(self)
-		#self.window.show()
-
-
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
