@@ -188,7 +188,10 @@ class NonTech(QWidget):
 		self.doc.setSummary()
 
 		self.doc.pageBreak()
+		
 		self.doc.Intro(cname,PManager,Author)
+		self.doc.pageBreak()
+
 		self.doc.Savereport()
 
 if __name__ == '__main__':
