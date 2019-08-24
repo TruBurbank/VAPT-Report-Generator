@@ -18,7 +18,12 @@ class Conclusion(QWidget):
 		self.width = 1280
 		self.height = 720
 		self.doc = Print_document()
-		self.doc.reinitialize_doc()
+        self.doc = Print_document()
+        if  self.doc.start_doc():
+            self.doc.reinitialize_doc()
+        else:
+            self.doc.start_doc()
+            self.doc.initialize_doc()
 
 	def ConclusionUI(self):
 		self.setWindowTitle(self.title)
