@@ -19,7 +19,11 @@ class App(QWidget):
         self.__Img = None
         self.__doc = None
         self.doc = Print_document()
-        self.doc.reinitialize_doc()
+        if  self.doc.start_doc():
+            self.doc.reinitialize_doc()
+        else:
+            self.doc.start_doc()
+            self.doc.initialize_doc()
 
     def TechUI(self, MainWindow):
         self.setWindowTitle(self.title)

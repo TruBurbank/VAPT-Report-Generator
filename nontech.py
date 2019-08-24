@@ -144,7 +144,7 @@ class NonTech(QWidget):
 		self.SaveButton.clicked.connect(self.back)
 		self.SaveButton.setFont(self.font)
 
-		self.saveReport = QPushButton('Add Vulnerabilty',self)
+		self.saveReport = QPushButton('Add Intro',self)
 		self.saveReport.move(560,580)
 		self.saveReport.clicked.connect(self.on_report)
 		self.saveReport.setFont(self.font)
@@ -188,7 +188,7 @@ class NonTech(QWidget):
 		self.doc.setSummary()
 
 		self.doc.pageBreak()
-		
+
 		self.doc.Intro(cname,PManager,Author)
 		self.doc.pageBreak()
 
